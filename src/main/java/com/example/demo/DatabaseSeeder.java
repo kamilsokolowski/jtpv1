@@ -41,6 +41,6 @@ public class DatabaseSeeder implements CommandLineRunner {
         measurements.add(new Measurement("02-06-2019", 23.6));
 
 
-        this.measurementRepository.saveAll(measurements);
+        measurementRepository.saveAll(measurements);
     }
 }

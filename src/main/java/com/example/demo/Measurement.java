@@ -2,11 +2,16 @@ package com.example.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Measurement {
-    private @Id @GeneratedValue Long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+
     private String date;
     private double temperature;
 

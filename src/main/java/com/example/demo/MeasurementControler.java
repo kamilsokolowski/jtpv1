@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/apiv1")
+@RequestMapping(value = "/m")
 public class MeasurementControler {
     /*
     * Api controler class.
@@ -28,7 +28,7 @@ public class MeasurementControler {
         return "<h1>This is an API</h1>";
     }
 
-    @RequestMapping(value = "/get-all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Measurement> getAll(){
         /*
         * This endpoint returns all measurements stored in database.(GET request)
