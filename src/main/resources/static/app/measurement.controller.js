@@ -22,7 +22,7 @@
             getAll();
         }
         function getAll(){
-            var url = "/m/all";
+            var url = "/apiv1/get-all";
             var measurementPromise = $http.get(url);
             measurementPromise.then(function(response){
                 vm.measurements = response.data;
