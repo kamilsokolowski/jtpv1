@@ -46,13 +46,18 @@ public class MeasurementControler {
         return measurementRepository.findByIdBetween(start, end);
     }
 
-    @RequestMapping(value = "/add/{date}/{value}", method = RequestMethod.POST)
-    public List<Measurement> addMeasurement(@PathVariable String date, @PathVariable double value){
+    @RequestMapping(value = "/add/{date}/{temperature}/{humidity}/{light}", method = RequestMethod.POST)
+    public List<Measurement> addMeasurement(
+            @PathVariable String date,
+            @PathVariable int temperature,
+            @PathVariable int humidity,
+            @PathVariable int light
+        ) {
         /*
         * This endpoint adds measurement to database.(POST request)
-        * Example: localhost:8080/add/01-01-1970/15.05
+        * Example: localhost:8080/add/01-01-1970/15/11/3
         * */
-        measurementRepository.save(new Measurement(date, value));
+        measurementRepository.save(new Measurement(date, temperature, humidity, light));
 
         return measurementRepository.findAll();
     }

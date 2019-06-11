@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
     <script type="text/javascript" src="/static/app/measurement.controller.js" th:src="@{/app/measurement.controller.js}"></script>
 </head>
-<body ng-app="app" ng-controller="MeasurementControler as vm">
+<body>
 <header>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -33,13 +33,29 @@
                 <tr>
                     <th>Date</th>
                     <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Light</th>
                     <th style="width: 90px"></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:if="${conditional.getTemperature()>0}" class="bg-success" th:text="${delta.getTemperature()+'('+conditional.getTemperature()+')'}" ></td>
+                    <td th:if="${conditional.getTemperature()<0}" class="bg-danger" th:text="${delta.getTemperature()+'('+conditional.getTemperature()+')'}" ></td>
+                    <td th:if="${conditional.getTemperature()==0}"th:text="${delta.getTemperature()}" ></td>
+                    <td th:if="${conditional.getHumidity()>0}" class="bg-success" th:text="${delta.getHumidity()+'('+conditional.getHumidity()+')'}" ></td>
+                    <td th:if="${conditional.getHumidity()<0}" class="bg-danger" th:text="${delta.getHumidity()+'('+conditional.getHumidity()+')'}" ></td>
+                    <td th:if="${conditional.getHumidity()==0}"th:text="${delta.getHumidity()}" ></td>
+                    <td th:if="${conditional.getLight()>0}" class="bg-success" th:text="${delta.getLight()+'('+conditional.getLight()+')'}" ></td>
+                    <td th:if="${conditional.getLight()<0}" class="bg-danger" th:text="${delta.getLight()+'('+conditional.getLight()+')'}" ></td>
+                    <td th:if="${conditional.getLight()==0}"th:text="${delta.getLight()}" ></td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="meas in vm.measurements">
-                    <td>{{meas.date}}</td>
-                    <td>{{meas.temperature}}</td>
+                <tr th:each="m : ${mes}">
+                    <td th:text="${m.getDate()}"></td>
+                    <td th:text="${m.getTemperature()}"></td>
+                    <td th:text="${m.getHumidity()}"></td>
+                    <td th:text="${m.getLight()}"></td>
                 </tr>
                 </tbody>
             </table>

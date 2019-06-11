@@ -13,45 +13,56 @@ public class Measurement {
     private long id;
 
     private String date;
-    private double temperature;
+    private int temperature;
+    private int humidity;
+    private int light;
 
     public Measurement() {}
 
-    public Measurement(String date, double temperature) {
+    public Measurement(String date, int temperature, int humidity, int light) {
         this.date = date;
         this.temperature = temperature;
+        this.humidity = humidity;
+        this.light = light;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDate() {
         return date;
     }
 
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setDate(String date) {
         this.date = date;
     }
 
-    public void setTemperature(double temperature) {
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 
-    @Override
-    public String toString() {
-        return "Measurement{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", temperature=" + temperature +
-                '}';
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public int getLight() {
+        return light;
+    }
+
+    public void setLight(int light) {
+        this.light = light;
     }
 }
